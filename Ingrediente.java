@@ -1,27 +1,38 @@
 public class Ingrediente {
     private String nome;
-    private int caloriasPorPorção;
-    private double precoPorPorção;
-    private double quantidadePorPorção;
+    private int caloriasPorPorcao;
+    private double precoPorPorcao;
+    private double quantidadePorPorcao;
     
     void setNome(String nome){
         this.nome = nome;
     }
        
-    void setPrecoPorPorção(double preco){
-        precoPorPorção = preco;
+    void setPrecoPorPorcao(double preco){
+        precoPorPorcao = preco;
     }
        
-    void setCaloriasPorPorção(int caloria){
-        caloriasPorPorção = caloria;
+    void setCaloriasPorPorcao(int caloria){
+        caloriasPorPorcao = caloria;
     }
     
-    void setQuantidadePorPorção(double quantidade){
-        quantidadePorPorção = quantidade;
+    void setQuantidadePorPorcao(double quantidade){
+        quantidadePorPorcao = quantidade;
     }
     
     String getNome(){
         return nome;
     }
-
+    
+    int getCaloriaPorPorcao(){
+        return caloriasPorPorcao;
+    }
+    
+    double getPrecoPorPorção(){
+        return precoPorPorcao;
+    }
+    
+    double getQuantidadePorPorção(){
+        return quantidadePorPorcao;
+    }
 }
