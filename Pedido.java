@@ -115,4 +115,19 @@ public class Pedido {
         precoTotal = precoPizzas+ taxaDeEntrega;
         data = new Date();
     }
+    
+    void mostrarPedido(){
+        System.out.println("        Data: "+ data);
+        System.out.println("        Nome: "+ nome);
+        System.out.println("        Endereço: "+ endereco);
+        System.out.println("        Telefone: "+ telefone);
+        System.out.print("        Pedido: ");
+        for(Pizza pizza: pizzas)
+            System.out.print(pizza.getNome()+"; ");
+        System.out.println();
+        System.out.println("        Tipo de Pagamento: "+ tipoDePagamento);
+        System.out.println("        Taxa de Entrega: "+ taxaDeEntrega);
+        System.out.println("        Preço das Pizzas: "+ precoPizzas);
+        System.out.println("        Total: "+ precoTotal);
+    }
 }
