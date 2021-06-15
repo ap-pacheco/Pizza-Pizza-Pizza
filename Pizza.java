@@ -57,4 +57,12 @@ public class Pizza {
     boolean removerIngrediente(Ingrediente ingrediente){
         return ingredientes.remove(ingrediente);
     }
+    
+    double custo(){
+        double custo=0;
+        for(Ingrediente ingrediente : ingredientes ){
+            custo += ingrediente.getPrecoPorPorção();
+        }
+        return custo;
+    }
 }

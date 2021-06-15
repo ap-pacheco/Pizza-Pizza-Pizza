@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Principal {
 
@@ -258,7 +258,7 @@ public class Principal {
         
         if(gerenPedidos.addPedido(pedido)){
             System.out.println("    Pedido realizado com sucesso!!");
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else
             System.out.println("    Pedido de "+ pedido.getNome() +" não realizado com sucesso!!");
@@ -275,7 +275,7 @@ public class Principal {
         
         if(gerenPedidos.addPedido(pedido)){
             System.out.println("    Pedido realizado com sucesso!!");
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else
             System.out.println("    Pedido de "+ pedido.getNome() +" não realizado com sucesso!!");
@@ -285,13 +285,14 @@ public class Principal {
         pedido.setEndereco("Na Pizzaria");
         pedido.setTelefone("543219876");
         pedido.addPizza(cardapio.consultarPizza("Calabresa"));
+        pedido.addPizza(cardapio.consultarPizza("Calabresa"));
         pedido.setTaxaDeEntrega(0);
         pedido.setTipoDePagamento("Dinheiro");
         pedido.fecharPedido();
         
         if(gerenPedidos.addPedido(pedido)){
             System.out.println("    Pedido realizado com sucesso!!");
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else
             System.out.println("    Pedido de "+ pedido.getNome() +" não realizado com sucesso!!");
@@ -302,7 +303,7 @@ public class Principal {
         pedido = gerenPedidos.consultarUltimoPedido("123456789");
         if(pedido!=null){
             System.out.println("    Pedido encontrado com sucesso!!");
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else
             System.out.println("    Pedido encontrado não com sucesso!!");
@@ -311,7 +312,7 @@ public class Principal {
         if(pedido.removePizza(p1)){
             System.out.println("    Pizza Removida com sucesso!!");
             pedido.fecharPedido();
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else{
             System.out.println("    Pizza Removida não com sucesso!!");
@@ -329,7 +330,7 @@ public class Principal {
         pedido = gerenPedidos.consultarUltimoPedido("987654321");
         if(pedido!=null){
             System.out.println("    Pedido encontrado com sucesso!!");
-            mostrarPedido(pedido);
+            pedido.mostrarPedido();
         }
         else
             System.out.println("    Pedido encontrado não com sucesso!!");
@@ -345,28 +346,17 @@ public class Principal {
         ArrayList<Pedido> pedidos;
         pedidos = gerenPedidos.getTodosPedido();
         for(Pedido pe : pedidos){
-            mostrarPedido(pe);
+            pe.mostrarPedido();
             System.out.println("--------------------------------------");
         }
-    
         
+        Calendar calInc = Calendar.getInstance();
+        Calendar calFinal = Calendar.getInstance();
+        calInc.set(2021, 05,14);
+        Relatorio relatorio = new Relatorio(gerenPedidos,calInc,calFinal);
     }
     
-    static void mostrarPedido(Pedido pedido){
-        System.out.println("        Data: "+ pedido.getData());
-        System.out.println("        Nome: "+ pedido.getNome());
-        System.out.println("        Endereço: "+ pedido.getEndereco());
-        System.out.println("        Telefone: "+ pedido.getTelefone());
-        System.out.print("        Pedido: ");
-        for(Pizza pizza: pedido.getTodosPizzas())
-            System.out.print(pizza.getNome()+"; ");
-        System.out.println();
-        System.out.println("        Tipo de Pagamento: "+ pedido.getTipoDePagamento());
-        System.out.println("        Taxa de Entrega: "+ pedido.getTaxaDeEntrega());
-        System.out.println("        Preço das Pizzas: "+ pedido.getPrecoPizzas());
-        System.out.println("        Total: "+ pedido.getPrecoTotal());
-        
-    }
+    
     
     
 }
